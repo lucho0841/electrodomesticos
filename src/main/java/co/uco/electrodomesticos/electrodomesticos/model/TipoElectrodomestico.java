@@ -52,29 +52,15 @@ public class TipoElectrodomestico {
 
 
 
-
-
     public String getIdTipoElectrodomestico() {
         return idTipoElectrodomestico;
-    }
-
-    public void setIdTipoElectrodomestico(String idTipoElectrodomestico) {
-        this.idTipoElectrodomestico = idTipoElectrodomestico;
     }
 
     public String getNombreTipoElectrodomestico() {
         return nombreTipoElectrodomestico;
     }
 
-    public void setNombreTipoElectrodomestico(String nombreTipoElectrodomestico) {
-        this.nombreTipoElectrodomestico = nombreTipoElectrodomestico;
-    }
-
     public boolean isActivo() {
         return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
     }
 }

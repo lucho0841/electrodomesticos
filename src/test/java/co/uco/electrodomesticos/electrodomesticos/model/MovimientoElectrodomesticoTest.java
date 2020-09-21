@@ -1,6 +1,7 @@
 package co.uco.electrodomesticos.electrodomesticos.model;
 
 import co.uco.electrodomesticos.electrodomesticos.model.exception.BusinessException;
+import co.uco.electrodomesticos.electrodomesticos.util.Validar;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -67,7 +68,7 @@ class MovimientoElectrodomesticoTest {
                     .setIdMovimiento("1238277332")
                     .setTipoElectrodomestico("Lavadora")
                     .setMarca("samsung")
-                    .setSerial("5675HGFYT7878")
+                    .setSerial(Validar.quitarEspacios("5675HGFYT7878"))
                     .build();
         }catch (BusinessException ex){
             assertEquals(MovimientoElectrodomestico.FECHA_ENTRADA_VACIO,ex.getMessage());

@@ -26,19 +26,6 @@ public class Validar {
         return validador.replaceAll("").trim();
     }
 
-    public static boolean idProprietario(String identification, List<Propietario> lista) {
-        identification = quitarEspacios(identification);
-        boolean encontrado = false;
-        if (!lista.isEmpty()) {
-            for (Propietario propietario : lista) {
-                if (propietario.getIdentificacion().equals(identification)) {
-                    encontrado = true;
-                    break;
-                }
-            }
-        }
-        return encontrado;
-    }
 
     public static void email(String email, String vacio, String invalido) {
 

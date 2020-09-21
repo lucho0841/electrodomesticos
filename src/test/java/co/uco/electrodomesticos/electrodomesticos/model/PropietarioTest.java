@@ -1,6 +1,7 @@
 package co.uco.electrodomesticos.electrodomesticos.model;
 
 import co.uco.electrodomesticos.electrodomesticos.model.exception.BusinessException;
+import co.uco.electrodomesticos.electrodomesticos.util.Validar;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -10,19 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class PropietarioTest {
 
     @Test
-    public void requerirNombrePropietario(){
-        try {
-            Propietario propietario = new Propietario.PropietarioBuilder().build();
-        } catch (BusinessException ex){
-            assertEquals(Propietario.NOMBRE_VACIO, ex.getMessage());
-        }
-    }
-
-    @Test
     public void requerirIdentificacion(){
         try {
             Propietario propietario = new Propietario.PropietarioBuilder()
-                    .setIdentificacion("1036962400")
+                    .setIdentificacion(Validar.quitarEspacios("1036962400"))
                     .setCorreo("luis.solano@gmail.com")
                     .setNombrePropietario("Luis Eduardo")
                     .setTelefono("3116856400")
@@ -66,13 +58,15 @@ class PropietarioTest {
     @Test
     public void requerirNombre(){
         try {
+            String nombre = "Luis Eduardo";
             Propietario propietario = new Propietario.PropietarioBuilder()
                     .setIdentificacion("1036962400")
                     .setCorreo("luis.solano@gmail.com")
-                    .setNombrePropietario("Luis Eduardo")
+                    .setNombrePropietario(Validar.unSoloEspacio("Luis     Eduardo"))
                     .setTelefono("3116856400")
                     .setFechaInicio(new Date())
                     .build();
+            assertEquals(nombre, propietario.getNombrePropietario());
         } catch (BusinessException ex){
 
             assertEquals(Propietario.NOMBRE_VACIO, ex.getMessage());
