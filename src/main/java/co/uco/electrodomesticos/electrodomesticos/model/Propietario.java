@@ -65,18 +65,16 @@ public class Propietario {
         public Propietario build() throws BusinessException{
             Propietario propietario = new Propietario();
             propietario.nombrePropietario = this.nombrePropietario;
-            //Por favor arreglar el metodo de unSoloEspacio()
             Validar.estaVacia(nombrePropietario, NOMBRE_VACIO);
             propietario.correo = this.correo;
             Validar.email(correo, CORREO_VACIO, INVALID_EMAIL);
             propietario.identificacion = this.identificacion;
             Validar.estaVacia(identificacion, ID_VACIO);
             propietario.fechaInicio = this.fechaInicio;
+            Validar.FechaNula(fechaInicio, FECHA_VACIO);
             propietario.direccion = this.direccion;
             propietario.telefono = this.telefono;
             Validar.estaVacia(telefono, TELEFONO_VACIO);
-            Validar.FechaNula(fechaInicio, FECHA_VACIO);
-
 
             return propietario;
         }

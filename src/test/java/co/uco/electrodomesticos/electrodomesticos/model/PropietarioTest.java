@@ -10,15 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class PropietarioTest {
 
     @Test
-    public void requerirIdentificacion(){
-        try {
-            Propietario propietario = new Propietario.PropietarioBuilder().build();
-        } catch (BusinessException ex){
-            assertEquals(Propietario.ID_VACIO, ex.getMessage());
-        }
-    }
-
-    @Test
     public void requerirNombrePropietario(){
         try {
             Propietario propietario = new Propietario.PropietarioBuilder().build();
@@ -28,11 +19,29 @@ class PropietarioTest {
     }
 
     @Test
+    public void requerirIdentificacion(){
+        try {
+            Propietario propietario = new Propietario.PropietarioBuilder()
+                    .setIdentificacion("1036962400")
+                    .setCorreo("luis.solano@gmail.com")
+                    .setNombrePropietario("Luis Eduardo")
+                    .setTelefono("3116856400")
+                    .setFechaInicio(new Date())
+                    .build();
+        } catch (BusinessException ex){
+            assertEquals(Propietario.ID_VACIO, ex.getMessage());
+        }
+    }
+
+    @Test
     public void requerirCorreo(){
         try {
             Propietario propietario = new Propietario.PropietarioBuilder()
                     .setIdentificacion("1036962400")
                     .setCorreo("luis.solano@gmail.com")
+                    .setNombrePropietario("Luis Eduardo")
+                    .setTelefono("3116856400")
+                    .setFechaInicio(new Date())
                     .build();
         } catch (BusinessException ex){
             assertEquals(Propietario.CORREO_VACIO, ex.getMessage());
@@ -45,6 +54,9 @@ class PropietarioTest {
             Propietario propietario = new Propietario.PropietarioBuilder()
                     .setIdentificacion("1036962400")
                     .setCorreo("luis.solano@gmail.com")
+                    .setNombrePropietario("Luis Eduardo")
+                    .setTelefono("3116856400")
+                    .setFechaInicio(new Date())
                     .build();
         } catch (BusinessException ex){
             assertEquals(Propietario.INVALID_EMAIL, ex.getMessage());
@@ -58,6 +70,8 @@ class PropietarioTest {
                     .setIdentificacion("1036962400")
                     .setCorreo("luis.solano@gmail.com")
                     .setNombrePropietario("Luis Eduardo")
+                    .setTelefono("3116856400")
+                    .setFechaInicio(new Date())
                     .build();
         } catch (BusinessException ex){
 
@@ -73,6 +87,7 @@ class PropietarioTest {
                     .setCorreo("luis.solano@gmail.com")
                     .setNombrePropietario("Luis Eduardo")
                     .setTelefono("3116856400")
+                    .setFechaInicio(new Date())
                     .build();
         } catch (BusinessException ex){
 
@@ -95,7 +110,5 @@ class PropietarioTest {
             assertEquals(Propietario.FECHA_VACIO, ex.getMessage());
         }
     }
-
-
 
 }
