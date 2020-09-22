@@ -45,8 +45,14 @@ public class Validar {
         }
     }
 
-    public static void FechaNula(Date fechaInicio, String mensaje) throws BusinessException {
+    public static void fechaNula(Date fechaInicio, String mensaje) throws BusinessException {
         if(fechaInicio == null){
+            throw new BusinessException(mensaje);
+        }
+    }
+
+    public static void encontrarCero(Double valor, String mensaje){
+        if (valor <= 0){
             throw new BusinessException(mensaje);
         }
     }

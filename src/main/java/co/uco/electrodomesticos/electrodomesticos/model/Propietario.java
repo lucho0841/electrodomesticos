@@ -71,7 +71,7 @@ public class Propietario {
             propietario.identificacion = this.identificacion;
             Validar.estaVacia(identificacion, ID_VACIO);
             propietario.fechaInicio = this.fechaInicio;
-            Validar.FechaNula(fechaInicio, FECHA_VACIO);
+            Validar.fechaNula(fechaInicio, FECHA_VACIO);
             propietario.direccion = this.direccion;
             propietario.telefono = this.telefono;
             Validar.estaVacia(telefono, TELEFONO_VACIO);

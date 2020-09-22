@@ -2,6 +2,7 @@ package co.uco.electrodomesticos.electrodomesticos.model;
 
 
 import co.uco.electrodomesticos.electrodomesticos.model.exception.BusinessException;
+import co.uco.electrodomesticos.electrodomesticos.util.DateUtil;
 import co.uco.electrodomesticos.electrodomesticos.util.Validar;
 
 
@@ -23,6 +24,7 @@ public class MovimientoElectrodomestico {
     private String serial;
     private String observacion;
     private String diagnosticoTecnico;
+    private TipoElectrodomestico tElectrodomestico;
     private Date fechaEntranda;
     private Date fechaSalida;
 
@@ -38,6 +40,7 @@ public class MovimientoElectrodomestico {
         private String serial;
         private String observacion;
         private String diagnosticoTecnico;
+        private TipoElectrodomestico tElectrodomestico;
         private Date fechaEntranda;
         private Date fechaSalida;
 
@@ -71,6 +74,11 @@ public class MovimientoElectrodomestico {
             return this;
         }
 
+        public MovimientoElectrodomesticoBuilder settElectrodomestico(TipoElectrodomestico tElectrodomestico) {
+            this.tElectrodomestico = tElectrodomestico;
+            return this;
+        }
+
         public MovimientoElectrodomesticoBuilder setFechaEntranda(Date fechaEntranda) {
             this.fechaEntranda = fechaEntranda;
             return this;
@@ -95,12 +103,18 @@ public class MovimientoElectrodomestico {
             movimientoElectrodomestico.observacion=this.observacion;
             movimientoElectrodomestico.diagnosticoTecnico=this.diagnosticoTecnico;
             movimientoElectrodomestico.fechaEntranda=this.fechaEntranda;
-            Validar.FechaNula(fechaEntranda,FECHA_ENTRADA_VACIO);
+            Validar.fechaNula(fechaEntranda,FECHA_ENTRADA_VACIO);
             movimientoElectrodomestico.fechaSalida=this.fechaSalida;
-            Validar.FechaNula(fechaSalida,FECHA_SALIDA_VACIO);
+            Validar.fechaNula(fechaSalida,FECHA_SALIDA_VACIO);
+            movimientoElectrodomestico.tElectrodomestico = tElectrodomestico;
 
             return movimientoElectrodomestico;
         }
+    }
+
+    public double calcularPrecioMantenimiento(){
+        double horas = (DateUtil.minutesDiff(fechaEntranda,fechaSalida));
+        return tElectrodomestico.getTarifaMantenimiento() * horas;
     }
 
 
